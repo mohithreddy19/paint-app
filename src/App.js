@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import "./App.css";
 
 const App = () => {
   const canvasRef = useRef(null);
@@ -8,7 +9,7 @@ const App = () => {
   const [brushWidth, setBrushWidth] = useState(5);
   const [brushColor, setBrushColor] = useState("#000000");
   const [isEraser, setIsEraser] = useState(false);
-  const [shapeMode, setShapeMode] = useState("freehand"); // freehand, line, rectangle, circle
+  const [shapeMode, setShapeMode] = useState("freehand");
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
   const [uploadedImage, setUploadedImage] = useState(null);
 
@@ -25,10 +26,8 @@ const App = () => {
   const toggleEraser = () => {
     setIsEraser((prev) => {
       if (!prev) {
-        // If turning on eraser, set the brush color to white
         ctxRef.current.strokeStyle = "#ffffff";
       } else {
-        // If turning off eraser, restore the previous brush color
         ctxRef.current.strokeStyle = brushColor;
       }
       return !prev;
@@ -96,12 +95,12 @@ const App = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    setUploadedImage(null); // Clear uploaded background
+    setUploadedImage(null);
   };
 
   const handleShapeChange = (e) => {
     setShapeMode(e.target.value);
-    setIsEraser(false); // Disable eraser if switching to shape mode
+    setIsEraser(false);
   };
 
   const handleImageUpload = (e) => {
@@ -121,21 +120,22 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <h1>Paint App</h1>
+      <header className="app-header">
+        <h1>Creative Paint App</h1>
+      </header>
 
-      {/* Toolbar */}
       <div className="toolbar">
-        <label>
-          Brush Color:
+        <div className="toolbar-item">
+          <label>Brush Color:</label>
           <input
             type="color"
             value={brushColor}
             onChange={(e) => setBrushColor(e.target.value)}
             disabled={isEraser}
           />
-        </label>
-        <label>
-          Brush Width:
+        </div>
+        <div className="toolbar-item">
+          <label>Brush Width:</label>
           <input
             type="range"
             min="1"
@@ -143,27 +143,28 @@ const App = () => {
             value={brushWidth}
             onChange={(e) => setBrushWidth(Number(e.target.value))}
           />
-        </label>
-        <label>
-          Shape:
+        </div>
+        <div className="toolbar-item">
+          <label>Shape:</label>
           <select value={shapeMode} onChange={handleShapeChange}>
             <option value="freehand">Freehand</option>
             <option value="line">Line</option>
             <option value="rectangle">Rectangle</option>
             <option value="circle">Circle</option>
           </select>
-        </label>
-        <button onClick={clearCanvas}>Clear Canvas</button>
-        <button onClick={toggleEraser}>
+        </div>
+        <button className="toolbar-btn" onClick={clearCanvas}>
+          Clear Canvas
+        </button>
+        <button className="toolbar-btn" onClick={toggleEraser}>
           {isEraser ? "Switch to Brush" : "Switch to Eraser"}
         </button>
-        <label>
-          Upload Background:
+        <div className="toolbar-item">
+          <label>Upload Background:</label>
           <input type="file" accept="image/*" onChange={handleImageUpload} />
-        </label>
+        </div>
       </div>
 
-      {/* Canvas */}
       <canvas
         ref={canvasRef}
         onMouseDown={startDrawing}
@@ -171,14 +172,14 @@ const App = () => {
         onMouseMove={draw}
         width={800}
         height={600}
-        style={{
-          border: "1px solid black",
-          cursor: isEraser ? "cell" : "crosshair",
-        }}
+        className="paint-canvas"
       ></canvas>
 
-      {/* Display uploaded image name */}
-      {uploadedImage && <p>Background: {uploadedImage}</p>}
+      {uploadedImage && <p className="image-name">Background: {uploadedImage}</p>}
+
+      <footer className="app-footer">
+        <p>© 2024 Mohith Reddy | Creative Paint App</p>
+      </footer>
     </div>
   );
 };

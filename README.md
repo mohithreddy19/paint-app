@@ -67,9 +67,11 @@ texttool - https://1drv.ms/i/c/866386da49070377/Ebl8v6EC4x9OiwXUP54nujgBjw9MzWAL
 Challenge 1: Smooth Freehand Drawing
 Problem: Creating a smooth drawing experience with the Canvas API.
 Solution: Used lineTo method of the Canvas API combined with React state management (isDrawing, brushWidth, brushColor) to track drawing events and ensure responsiveness.
+
 Challenge 2: Handling Background Image Uploads
 Problem: Ensuring uploaded images scaled and fit correctly on the canvas.
 Solution: Used the Image object and drawImage method to dynamically scale images to fit the canvas dimensions.
+
 Challenge 3: Managing Multiple Tools
 Problem: Allowing seamless switching between tools (e.g., freehand, shapes, eraser, text).
 Solution: Used a combination of states (shapeMode, textMode, isEraser) and conditional logic to ensure tools behave independently without conflicts.

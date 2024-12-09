@@ -33,10 +33,8 @@ The app is built with modern web development tools and technologies:
 Follow these steps to get the app running on your local machine:
 
 1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/your-username/creative-paint-app.git
    
-   Replace your-username with the appropriate GitHub username.
+   git clone https://github.com/mohithreddy19/creative-paint-app.git
 
 2. Navigate to the Project Directory
 
@@ -59,7 +57,9 @@ npm run build
 ## Screenshots/GIFs
 
 homescreen - https://1drv.ms/i/c/866386da49070377/ESZq6yBscaRBsR0glrNzE0kBrbh0nLZDY_6yuwdjEYuQvw?e=rmPolE
+
 background - https://1drv.ms/i/c/866386da49070377/EdqMzG2t3VVBqPZv7mqCVOwBl2VB-Dbjv82mOvu0ggL8OA?e=hBPWFB
+
 texttool - https://1drv.ms/i/c/866386da49070377/Ebl8v6EC4x9OiwXUP54nujgBjw9MzWALzLbpRcSLCr3y4A?e=VSDzEr
 
 ## Notable Challenges and Solutions
